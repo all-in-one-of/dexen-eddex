@@ -3,6 +3,7 @@ Executor classes used for executing tasks.
 """
 import sys, os
 import hou
+from bson.binary import Binary
 
 #Current working directory
 HOU_FOLDER_PATH = os.getcwd()
@@ -93,7 +94,7 @@ def houdini_develop(ind, hip_file_name, in_path, out_path, animate=None):
     # get and save the phenotype
     with open(phen_file_path, "rb") as f:
         phenotype = f.read()
-    return phenotype
+    return Binary(phenotype)
 
 def houdini_evaluate(ind, score_names, hip_file_name, in_path, out_path, animate=None):
     #get the phenotype
