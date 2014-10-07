@@ -83,18 +83,17 @@ def main():
     current_dir =  os.path.split(os.getcwd())[0] #go back one dir
 
     #get the houdini path from the user
-    def is_houdini_dir(path):
-        if os.path.isdir(path):
-            dir_contents = os.listdir(path)
-            if "houdini" in dir_contents:
-                return True
+    def is_houdini_path(path):
+        exe_file = os.path.join(path, 'bin', 'houdini.exe')
+        if os.path.isfile(exe_file):
+            return True
         return False
 
     valid_path = False
     while not valid_path:
         houdini_dir = raw_input("\nType the path where Houdini is installed (you can use cut and paste):\n>")
         print "Checking the path that you entered: " + houdini_dir
-        valid_path = is_houdini_dir(houdini_dir)
+        valid_path = is_houdini_path(houdini_dir)
         if valid_path:
             print "The path looks good :)"
         else:
