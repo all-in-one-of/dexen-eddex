@@ -12,7 +12,8 @@ HOU_FOLDER_PATH = os.getcwd()
 
 def _load_hip_file(hip_file_name):
     """Attempt to load a hip file in Houdini """
-    hou_file_path = os.path.join(HOU_FOLDER_PATH, hip_file_name)
+    #Replacing "\\" with "/" is required to avoid errors in evaluating "$HIP"
+    hou_file_path = os.path.join(HOU_FOLDER_PATH, hip_file_name).replace("\\", "/")
     try:
         result = hou.hipFile.load(hou_file_path)
     except hou.LoadWarning as e:
