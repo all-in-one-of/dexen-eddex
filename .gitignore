@@ -57,3 +57,10 @@ target/
 backup/
 code/
 data/
+
+#############
+## Jekyll
+#############
+docs/_site/
+.sass-cache/
+.jekyll-metadata
